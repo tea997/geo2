@@ -1,0 +1,82 @@
+/* static/style.css */
+
+/* Background image setup */
+body.bg-img {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: 
+        linear-gradient(
+            rgba(0, 0, 0, 0.5), 
+            rgba(0, 0, 0, 0.5)
+        ),
+        url("510e0dca-5311-4840-8a95-3e11d9e886ce.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container with glassmorphism style */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 40px 50px;
+    width: 380px;
+    text-align: center;
+    color: white;
+}
+
+.container h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+/* File input styling */
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 30px;
+}
+
+input[type="file"]:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4caf50;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #45a049;
+    box-shadow: 0 4px 12px rgba(69, 160, 73, 0.7);
+}
+
+/* Remove default focus outline but keep accessibility */
+button:focus, input[type="file"]:focus {
+    outline: 2px solid #90ee90;
+    outline-offset: 2px;
+}

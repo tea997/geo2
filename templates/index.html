@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Upload CSV for Preprocessing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-img">
+    <div class="container">
+        <h2>Upload CSV to Preprocess Data</h2>
+        <form action="/preprocess" method="post" enctype="multipart/form-data">
+            <label for="csvfile" style="display:none;">CSV File</label>
+            <input type="file" name="csvfile" id="csvfile" accept=".csv" required />
+            <button type="submit">Preprocess</button>
+        </form>
+    </div>
+</body>
+</html>
