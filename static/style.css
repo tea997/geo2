@@ -15,7 +15,7 @@ html, body {
 /* Left half with background image */
 .left-side {
     flex: 1;
-    background: url("Geological-Survey-of-India.webp") no-repeat center center;
+    background: url("image.png") no-repeat center center;
     background-size: cover;
 }
 
