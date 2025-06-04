@@ -1,82 +1,123 @@
-/* static/style.css */
-
-/* Background image setup */
-body.bg-img {
+/* Reset and base */
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: 
-        linear-gradient(
-            rgba(0, 0, 0, 0.5), 
-            rgba(0, 0, 0, 0.5)
-        ),
-        url("510e0dca-5311-4840-8a95-3e11d9e886ce.jpg") no-repeat center center fixed;
+}
+
+/* Container to split screen into two halves */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Left half with background image */
+.left-side {
+    flex: 1;
+    background: url("Geological-Survey-of-India.webp") no-repeat center center;
     background-size: cover;
+}
+
+/* Right half */
+.right-side {
+    flex: 1;
+    background-color: #272222;
+    color: rgb(233, 233, 233);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
-/* Container with glassmorphism style */
-.container {
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 40px 50px;
-    width: 380px;
-    text-align: center;
-    color: white;
+/* Container for stacked boxes */
+.content {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 5%;
+    background-color: rgba(76, 113, 102, 0.83);
 }
 
-.container h2 {
+/* Message box */
+.message-box {
     margin-bottom: 30px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
+    text-align: center;
 }
 
-/* File input styling */
+.message-box h2 {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.message-box p {
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+/* Form box */
+.form-box {
+    background-color: rgba(80, 66, 94, 0.142);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* File input style */
 input[type="file"] {
     width: 100%;
-    padding: 10px;
-    border-radius: 12px;
+    padding: 12px;
+    border-radius: 8px;
     border: none;
-    background: rgba(255, 255, 255, 0.25);
-    color: white;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: background-color 0.3s ease;
 }
 
 input[type="file"]:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Button styling */
+/* Submit button style */
 button {
     width: 100%;
     padding: 12px;
     background: #4caf50;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     color: white;
-    font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background: #45a049;
-    box-shadow: 0 4px 12px rgba(69, 160, 73, 0.7);
 }
 
-/* Remove default focus outline but keep accessibility */
-button:focus, input[type="file"]:focus {
-    outline: 2px solid #90ee90;
-    outline-offset: 2px;
+/* Responsive for smaller screens */
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-side, .right-side {
+        flex: none;
+        height: 50vh;
+        width: 100vw;
+    }
+
+    .content {
+        max-width: none;
+        width: 90%;
+    }
 }
