@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <title>Upload CSV for Preprocessing</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="static\style.css" />
 </head>
-<body class="bg-img">
+<body>
     <div class="container">
-        <h2>Upload CSV to Preprocess Data</h2>
-        <form action="/preprocess" method="post" enctype="multipart/form-data">
-            <label for="csvfile" style="display:none;">CSV File</label>
-            <input type="file" name="csvfile" id="csvfile" accept=".csv" required />
-            <button type="submit">Preprocess</button>
-        </form>
+        <div class="left-side"></div>
+        <div class="right-side">
+            <div class="content">
+                <div class="message-box">
+                    <h2>Are you taking too much time to preprocess your data?</h2>
+                    <p>If yes, this is for you.<br>Now you can preprocess your data within few seconds.</p>
+                </div>
+                <div class="form-box">
+                    <form action="/preprocess" method="post" enctype="multipart/form-data">
+                        <label for="csvfile">Choose CSV file:</label><br>
+                        <input type="file" name="csvfile" id="csvfile" accept=".csv" required />
+                        <button type="submit">Preprocess</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
