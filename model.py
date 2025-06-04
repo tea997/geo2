@@ -1,4 +1,3 @@
-# model.py (Preprocessing Only)
 import pandas as pd
 import numpy as np
 
@@ -7,9 +6,41 @@ def preprocess_data(file_path_or_df):
         df = pd.read_csv(file_path_or_df)
     else:
         df = file_path_or_df.copy()
-    
+
+    # Function to check if value contains '<' or '>'
+    def is_special_val(x):
+        if isinstance(x, str):
+            return ('<' in x) or ('>' in x)
+        return False
+
+    cols_to_drop = []
+
+    for col in df.columns:
+        # Count how many values contain '<' or '>'
+        special_mask = df[col].apply(is_special_val)
+        special_count = special_mask.sum()
+        total_count = len(df[col])
+
+        if special_count >= total_count / 2:
+            # Drop column if half or more values are special
+            cols_to_drop.append(col)
+        else:
+            # Replace special values with NaN temporarily
+            df.loc[special_mask, col] = np.nan
+            # Convert to numeric (coerce errors to NaN)
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+
+            # Replace NaN with median (or mean)
+            median_val = df[col].median()
+            df[col].fillna(median_val, inplace=True)
+
+    # Drop columns with too many special values
+    df.drop(columns=cols_to_drop, inplace=True)
+
+    # After cleaning special values, replace other empty strings or '<' as you had before
     df.replace(['', '<'], np.nan, inplace=True)
 
+    # Fill NaN values with your specified defaults (optional, from your original code)
     df.fillna({
         'SiO2': 0.1, 'TiO2': 0.01, 'Al2O3': 0.1, 'Fe2O3': 0.1, 'MnO': 0.03, 'MgO': 0.01,
         'CaO': 0.01, 'Na2O': 0.1, 'K2O': 0.1, 'P2O5': 0.01, 'LOSS': 0.1, 'Ba': 50, 'Sc': 50,
